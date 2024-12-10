@@ -14,30 +14,29 @@ class App extends Component {
     super(props);
     this.state = {
       data: [
-        { name: 'John C.', salary: 800, increase: false, id: uuidv4() },
-        { name: 'Alex M.', salary: 3000, increase: false, id: uuidv4() },
-        { name: 'Carl W.', salary: 5000, increase: false, id: uuidv4() },
+        { name: 'John C.', salary: 800, id: uuidv4() },
+        { name: 'Alex M.', salary: 3000, id: uuidv4() },
+        { name: 'Carl W.', salary: 5000, id: uuidv4() },
       ],
     };
   }
 
   deleteItem = (id) => {
+    // const index = data.findIndex((elem) => elem.id === id);
+    // const before = data.slice(0, index);
+    // const after = data.slice(index + 1);
+    // const newArr = [...before, ...after];
     this.setState(({ data }) => {
       return {
         data: data.filter((item) => item.id !== id),
       };
-      // const index = data.findIndex((elem) => elem.id === id);
-      // const before = data.slice(0, index);
-      // const after = data.slice(index + 1);
-      // const newArr = [...before, ...after];
     });
   };
 
   addItem = (name, salary) => {
     const newItem = {
       name: name,
-      salary: salary,
-
+      salary: +salary,
       id: uuidv4(),
     };
     this.setState(({ data }) => {
@@ -48,6 +47,7 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.state.data);
     return (
       <div className="app">
         <AppInfo />
