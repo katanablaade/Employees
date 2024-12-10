@@ -20,13 +20,13 @@ class EmployeesAddForm extends Component {
   onItemSubmit = (e) => {
     e.preventDefault();
     const { name, salary } = this.state;
-    if (name) {
+    if (name.length > 3) {
       this.props.onAdd(name.trim(), salary.trim());
+      this.setState({
+        name: '',
+        salary: '',
+      });
     }
-    this.setState({
-      name: '',
-      salary: '',
-    });
   };
 
   render() {
